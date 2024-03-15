@@ -44,3 +44,4 @@ C:\Users\Laurie\source\repos\RentARoom.Web\bin\Debug\net8.0\Microsoft.Identity.C
 C:\Users\Laurie\source\repos\RentARoom.Web\obj\Debug\net8.0\RentARoom.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Laurie\source\repos\RentARoom.Web\bin\Debug\net8.0\RentARoom.dll
 C:\Users\Laurie\source\repos\RentARoom.Web\bin\Debug\net8.0\RentARoom.pdb
+C:\Users\Laurie\source\repos\RentARoom.Web\obj\Debug\net8.0\RentARoom.Web.sourcelink.json

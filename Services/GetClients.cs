@@ -22,7 +22,7 @@ namespace RentARoom.Web.Services
         }
 
         public async Task<RentARoom.Models.MyClientSub> GetClientBlz(int id)
-        {////
+        {//////
 
             var temp = await httpClient.GetFromJsonAsync<RentARoom.Models.MyClientSub>($"api/MyClients/{id}");
             return temp;
