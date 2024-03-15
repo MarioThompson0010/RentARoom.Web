@@ -1,0 +1,82 @@
+﻿@page "/DisplayReservations"
+
+@inherits DisplayReservationsBase
+@using RentARoom.Web.Services
+
+@inject IGetReservations GetReservations
+
+
+
+<h3>DisplayReservations</h3>
+@if (MyReservations != null)
+{
+    <div>
+        @foreach (var res in MyReservations)
+        {
+
+            <div>
+                RoomId : @res.RoomId, ClientId: @res.ClientId, Id: @res.Id
+            </div>
+
+        }
+    </div>
+}
+
+
+<div>
+    @* <EditForm Model="MyReservation"> *@
+        <div>
+            <label for="tbEmail">Enter your Email</label> <br />
+
+
+            <input type="text" id="tbEmail" name="tbEmail" required minlength="4" maxlength="100"
+                   @bind="Email" size="20" />
+        </div>
+        <p></p>
+        <div>
+            <label for="tbPhone">Enter your Phone</label><br />
+
+            <input type="text" id="tbPhone" name="tbPhone" required minlength="4" maxlength="50"
+                   @bind="Phone" size="10" />
+        </div>
+        <p>
+
+        </p>
+        <p>
+            <button class="btn btn-primary" @onclick="MakeReservationByEmail" type="button">
+                Lookup by email or phone
+            </button>
+        </p>
+    @* </EditForm> *@
+</div>
+
+@if (MakeReservation != null)
+{
+    if (MakeReservation.ReservationId != null)
+    {
+        <div>
+            <h3>
+                @MakeReservation?.FirstName @MakeReservation?.LastName
+            </h3>
+            <h5>
+                Room Number: @MakeReservation?.RoomNumber
+            </h5>
+
+        </div>
+    }
+    else
+    {
+        if (MakeReservation.Message == null || MakeReservation.Message == "")
+        {
+            <h3>
+                Unknown error
+            </h3>
+        }
+        else
+        {
+            <h3>
+                @MakeReservation.Message;
+            </h3>
+        }
+    }
+}

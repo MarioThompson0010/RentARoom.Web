@@ -1,0 +1,62 @@
+﻿@page "/"
+@page "/DisplayClients/{Id}"
+
+@inherits DisplayClientsBase
+@using RentARoom.Web.Services
+
+@inject IGetClients GetClients
+@* @inject NavigationManager Navigation *@
+
+
+<h3>DisplayClients</h3>
+@if (MyClientSub != null)
+{
+    <div>
+        <h3>
+            @MyClientSub.Email
+        </h3>
+    </div>
+}
+else if (MyClients != null)
+{
+    <div>
+
+        <label for="tbClientId">Enter your ID</label>
+
+        <input type="text" id="tbClientId" name="tbClientId" required minlength="4" maxlength="8"
+               @bind="Id" size="5" />
+
+        <button class="btn btn-primary" @onclick="LookupClientById" type="button">
+            Lookup by ID
+        </button>
+
+      
+    </div>
+    <div>
+        <button class="btn btn-primary" @onclick="ToggleNavMenu" type="button">
+
+            Click Me
+        </button>
+
+    </div>
+    <div>
+
+        @foreach (var client in MyClients)
+        {
+            <div>
+                <h3>
+                    @client.FirstName @client.LastName
+                </h3>
+            </div>
+
+        }
+    </div>
+}
+else
+{
+    <div class="spinner"></div>
+
+
+
+}
+
