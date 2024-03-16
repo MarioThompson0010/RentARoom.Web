@@ -40,3 +40,5 @@ obj/Debug/net8.0/RentARoom.Web.AssemblyInfo.cs
 obj/Debug/net8.0/RentARoom.Web.AssemblyInfoInputs.cache
 bin/
 obj/
+/.vs/RentARoom.Web/config
+/.vs/RentARoom.Web/FileContentIndex
