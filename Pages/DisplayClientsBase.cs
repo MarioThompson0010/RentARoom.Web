@@ -42,7 +42,7 @@ namespace RentARoom.Web.Pages
         protected override async Task OnInitializedAsync()
         {
             this.MyClients = (await GetClientService.GetMyClientsBlz()).ToList();// ToList();
-        
+        //
         }
 
         protected void MakeOrSeeReservations()
