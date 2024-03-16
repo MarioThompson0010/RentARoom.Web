@@ -7,6 +7,7 @@ namespace RentARoom.Web.Services
     {
         Task<IEnumerable</*RentARoom.Models.*/RentARoom.Models.MyClient>> GetMyClientsBlz();
         Task<RentARoom.Models.MyClientSub> GetClientBlz(int id);
+        Task<RentARoom.Models.MyClientSub> UpdateClientBlz(RentARoom.Models.MyClient myClient);
 
     }
 }

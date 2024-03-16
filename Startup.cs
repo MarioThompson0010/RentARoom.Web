@@ -34,12 +34,12 @@ namespace RentARoom.Web
 
             services.AddHttpClient<IGetClients, GetClients>("myapi", c =>
             {
-                c.BaseAddress = new Uri(/*"http://localhost:44379/api/"*/"https://localhost:7050/");
+                c.BaseAddress = new Uri(Configuration.GetConnectionString("LocalHostURI"));
             });
-            //hey//////
+            //hey////////
             services.AddHttpClient<IGetReservations, GetReservations>("myapiRes", c =>
             {
-                c.BaseAddress = new Uri(/*"http://localhost:44379/api/"*/"https://localhost:7050/");
+                c.BaseAddress = new Uri("https://localhost:7050/");
             });
         }
 

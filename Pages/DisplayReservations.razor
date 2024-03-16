@@ -25,28 +25,40 @@
 
 <div>
     @* <EditForm Model="MyReservation"> *@
-        <div>
-            <label for="tbEmail">Enter your Email</label> <br />
+    <div>
+        <label for="tbEmail">Enter your Email</label> <br />
 
 
-            <input type="text" id="tbEmail" name="tbEmail" required minlength="4" maxlength="100"
-                   @bind="Email" size="20" />
-        </div>
-        <p></p>
-        <div>
-            <label for="tbPhone">Enter your Phone</label><br />
+        <input type="text" id="tbEmail" name="tbEmail" required minlength="4" maxlength="100"
+               @bind="Email" size="20" />
+    </div>
+    <p></p>
+    <div>
+        <label for="tbPhone">Enter your Phone</label><br />
 
-            <input type="text" id="tbPhone" name="tbPhone" required minlength="4" maxlength="50"
-                   @bind="Phone" size="10" />
-        </div>
-        <p>
+        <input type="text" id="tbPhone" name="tbPhone" required minlength="4" maxlength="50"
+               @bind="Phone" size="10" />
+    </div>
+    <p>
 
-        </p>
-        <p>
-            <button class="btn btn-primary" @onclick="MakeReservationByEmail" type="button">
-                Lookup by email or phone
-            </button>
-        </p>
+    </p>
+    <p>
+        <button class="btn btn-primary" @onclick="MakeReservationByEmail" type="button">
+            Lookup by email or phone
+        </button>
+    </p>
+    <p>
+        <label for="tbDelete">Enter the ID of Reservation to delete</label><br />
+
+        <input type="text" id="tbDelete" required minlength="4" maxlength="12"
+               @bind="Id" size="12" />
+
+    </p>
+    <p>
+        <button class="btn btn-danger" @onclick="DeleteReservationById" type="button">
+            Delete
+        </button>
+    </p>
     @* </EditForm> *@
 </div>
 
@@ -60,6 +72,37 @@
             </h3>
             <h5>
                 Room Number: @MakeReservation?.RoomNumber
+            </h5>
+
+        </div>
+    }
+    else
+    {
+        if (MakeReservation.Message == null || MakeReservation.Message == "")
+        {
+            <h3>
+                Unknown error
+            </h3>
+        }
+        else
+        {
+            <h3>
+                @MakeReservation.Message;
+            </h3>
+        }
+    }
+}
+
+@if (DeleteReservation != null)
+{
+    if (DeleteReservation.ReservationId != null)
+    {
+        <div>
+            <h3>
+                @DeleteReservation?.ReservationId
+            </h3>
+            <h5>
+                Message: @DeleteReservation?.Message
             </h5>
 
         </div>

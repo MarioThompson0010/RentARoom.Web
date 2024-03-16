@@ -38,7 +38,7 @@ namespace RentARoom.Web.Pages
     protected override async Task OnInitializedAsync()
     {
       this.MyReservations = (await GetReservationService.GetMyReservationsBlz()).ToList();
-      //        
+      //    //    
     }
 
     protected async void ToggleNavMenu()
