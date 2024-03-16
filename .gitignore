@@ -38,3 +38,5 @@ obj/Debug/net8.0/project.razor.vs.bin
 obj/Debug/net8.0/project.razor.vscode.bin
 obj/Debug/net8.0/RentARoom.Web.AssemblyInfo.cs
 obj/Debug/net8.0/RentARoom.Web.AssemblyInfoInputs.cache
+bin/
+obj/
