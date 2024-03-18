@@ -1,5 +1,5 @@
 ﻿@page "/"
-@page "/DisplayClients/{Id}"
+@* @page "/DisplayClients/{Id}" *@
 
 @inherits DisplayClientsBase
 @using RentARoom.Web.Services
@@ -19,14 +19,15 @@
 else if (MyClients != null)
 {
 	<div>
-
+@* 
 		<label for="tbClientId">Enter your ID</label>
 
 		<input type="text" id="tbClientId" name="tbClientId" required minlength="4" maxlength="8"
 			   @bind="Id" size="5" />
+ *@
 		<p>
 			<button class="btn btn-primary" @onclick="LookupClientById" type="button">
-				Lookup by ID
+				Lookup Client by ID
 			</button>
 		</p>
 

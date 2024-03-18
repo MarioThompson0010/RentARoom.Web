@@ -47,3 +47,5 @@ bin/
 obj/
 /.vs/RentARoom.Web/config
 /.vs/RentARoom.Web/FileContentIndex
+RentARoom.Web.csproj.user
+RentARoom.Web.csproj.user

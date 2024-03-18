@@ -52,18 +52,26 @@ namespace RentARoom.Web.Pages
 
         protected async void LookupClientById()
         {
-            Navigation.NavigateTo($"DisplayClient/{this.Id}");
-
             int.TryParse(Id, out var intId);
-            this.MyClientSub = (await GetClientService.GetClientBlz(intId));// ToList();
-            if (this.MyClientSub != null)
+
+            if (intId == 0)
             {
-                this.Email = this.MyClientSub.Email?.Trim();// MyClientSub.Email;
-                this.PhoneNumber = this.MyClientSub.Phone?.Trim();// MyClientSub.Phone;
-                this.FirstName = this.MyClientSub.FirstName?.Trim();
-                this.LastName = this.MyClientSub.LastName?.Trim();
+                Navigation.NavigateTo($"DisplayClient");
             }
-            this.StateHasChanged();
+            else
+            {
+                Navigation.NavigateTo($"DisplayClient/{this.Id}");
+
+                this.MyClientSub = (await GetClientService.GetClientBlz(intId));// ToList();
+                if (this.MyClientSub != null)
+                {
+                    this.Email = this.MyClientSub.Email?.Trim();// MyClientSub.Email;
+                    this.PhoneNumber = this.MyClientSub.Phone?.Trim();// MyClientSub.Phone;
+                    this.FirstName = this.MyClientSub.FirstName?.Trim();
+                    this.LastName = this.MyClientSub.LastName?.Trim();
+                }
+            }
+			this.StateHasChanged();
         }
 
         protected async void UpdateClientOne()
