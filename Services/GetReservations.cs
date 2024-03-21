@@ -1,4 +1,5 @@
-﻿using RentARoom.Models;
+﻿using RentARoom.Models.Reservations;
+using RentARoom.Models.Clients;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,68 +9,68 @@ using System.Numerics;
 
 namespace RentARoom.Web.Services
 {
-  public class GetReservations : IGetReservations
-  {
-	private readonly HttpClient httpClient;
-
-	public GetReservations(HttpClient httpClient)
+	public class GetReservations : IGetReservations
 	{
-	  this.httpClient = httpClient;
-	}
+		private readonly HttpClient httpClient;
 
-	public async Task<IEnumerable<RentARoom.Models.MyReservation>> GetMyReservationsBlz()
-	{//
-	  var temp = await httpClient.GetFromJsonAsync<RentARoom.Models.MyReservation[]>("api/MyReservation");
-	  return temp;
-	}
-
-	public async Task<RentARoom.Models.MyReservation> GetReservationBlz(int id)
-	{
-	  var temp = await httpClient.GetFromJsonAsync<RentARoom.Models.MyReservation>($"api/MyReservation/{id}");
-	  return temp;
-	}
-
-	public async Task<RentARoom.Models.MakeReservationOutputSP> MakeReservationBlz(string email, string phone)
-	{
-	  var resinput = new RentARoom.Models.MakeReservationInputSP() { Email = email, Phone = phone };
-	  RentARoom.Models.MakeReservationOutputSP output = new MakeReservationOutputSP();
-	  var response = await httpClient.PostAsJsonAsync<RentARoom.Models.MakeReservationInputSP>($"api/MakeReservationOutput", resinput);
-	  try
-	  {
-		var temp = await response.Content.ReadFromJsonAsync<List<RentARoom.Models.MakeReservationOutputSP>>();
-		return temp.FirstOrDefault();
-
-	  }
-	  catch (System.Exception)
-	  {
-
-		return null;
-	  }
-
-
-	}
-
-	public async Task<RentARoom.Models.DeleteReservationOutputSP> DeleteReservationBlz(int id)
-	{
-	  RentARoom.Models.DeleteReservationInputSP delinput = new RentARoom.Models.DeleteReservationInputSP() { ReservationId = id };
-	  try
-	  {
-		var response = await httpClient.PostAsJsonAsync<RentARoom.Models.DeleteReservationInputSP>($"api/DeleteReservationOutput", delinput);
-
-		var temp = await response.Content.ReadFromJsonAsync<List<RentARoom.Models.DeleteReservationOutputSP>>();
-		if (temp != null)
+		public GetReservations(HttpClient httpClient)
 		{
-		  return temp.FirstOrDefault();
+			this.httpClient = httpClient;
 		}
 
-		return null;
-	  }
-	  catch (System.Exception)
-	  {
+		public async Task<IEnumerable<RentARoom.Models.Reservations.MyReservation>> GetMyReservationsBlz()
+		{//
+			var temp = await httpClient.GetFromJsonAsync<RentARoom.Models.Reservations.MyReservation[]>("api/MyReservation");
+			return temp;
+		}
 
-		return null;
-	  }
+		public async Task<RentARoom.Models.Reservations.MyReservation> GetReservationBlz(int id)
+		{
+			var temp = await httpClient.GetFromJsonAsync<RentARoom.Models.Reservations.MyReservation>($"api/MyReservation/{id}");
+			return temp;
+		}
 
+		public async Task<RentARoom.Models.Reservations.MakeReservationOutputSP> MakeReservationBlz(string email, string phone)
+		{
+			var resinput = new RentARoom.Models.Reservations.MakeReservationInputSP() { Email = email, Phone = phone };
+			RentARoom.Models.Reservations.MakeReservationOutputSP output = new MakeReservationOutputSP();
+			var response = await httpClient.PostAsJsonAsync<RentARoom.Models.Reservations.MakeReservationInputSP>($"api/MakeReservationOutput", resinput);
+			try
+			{
+				var temp = await response.Content.ReadFromJsonAsync<List<RentARoom.Models.Reservations.MakeReservationOutputSP>>();
+				return temp.FirstOrDefault();
+
+			}
+			catch (System.Exception)
+			{
+
+				return null;
+			}
+
+
+		}
+
+		public async Task<DeleteReservationOutputSP> DeleteReservationBlz(int id)
+		{
+			DeleteReservationInputSP delinput = new DeleteReservationInputSP() { ReservationId = id };
+			try
+			{
+				var response = await httpClient.PostAsJsonAsync<DeleteReservationInputSP>($"api/DeleteReservationOutput", delinput);
+
+				var temp = await response.Content.ReadFromJsonAsync<DeleteReservationOutputSP>();
+				if (temp == null)
+				{
+					return new DeleteReservationOutputSP();
+				}
+
+				return temp;
+			}
+			catch (System.Exception)
+			{
+
+				return null;
+			}
+
+		}
 	}
-  }
 }

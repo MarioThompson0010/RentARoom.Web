@@ -29,9 +29,7 @@ namespace RentARoom.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            //services.AddHttpClient<IGetClients, GetClients>();
-            //services.AddHttpClient<IGetReservations, GetReservations>();
-
+            
             services.AddHttpClient<IGetClients, GetClients>("myapi", c =>
             {
                 c.BaseAddress = new Uri(Configuration.GetConnectionString("LocalHostURI"));
@@ -41,6 +39,8 @@ namespace RentARoom.Web
             {
                 c.BaseAddress = new Uri("https://localhost:7050/");
             });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +59,8 @@ namespace RentARoom.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            //!!!!
+            //app.UseAuthentication();
             app.UseRouting();
             
             app.UseEndpoints(endpoints =>

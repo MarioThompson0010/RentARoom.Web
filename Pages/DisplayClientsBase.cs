@@ -35,9 +35,9 @@ namespace RentARoom.Web.Pages
         public string Email { get; set; }
 
 
-        public IEnumerable<RentARoom.Models.MyClient> MyClients { get; set; }
-        public RentARoom.Models.MyClient MyClient { get; set; }
-        public RentARoom.Models.MyClientSub MyClientSub { get; set; }
+        public IEnumerable<RentARoom.Models.Clients.MyClient> MyClients { get; set; }
+        public RentARoom.Models.Clients.MyClient MyClient { get; set; }
+        public RentARoom.Models.Clients.MyClientSub MyClientSub { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -78,7 +78,7 @@ namespace RentARoom.Web.Pages
         {
 
             int.TryParse(this.Id, out var intId);
-            RentARoom.Models.MyClient passclient = new RentARoom.Models.MyClient()
+            RentARoom.Models.Clients.MyClient passclient = new RentARoom.Models.Clients.MyClient()
             {
                 Id = intId,
                 Email = this.Email,

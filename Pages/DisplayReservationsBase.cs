@@ -29,11 +29,11 @@ namespace RentARoom.Web.Pages
     public string Phone { get; set; }
 
 
-    public IEnumerable<RentARoom.Models.MyReservation> MyReservations { get; set; }
-    public RentARoom.Models.MyReservation MyReservation { get; set; }
-    public RentARoom.Models.MyReservationSub MyReservationSub { get; set; }
-    public RentARoom.Models.MakeReservationOutputSP MakeReservation { get; set; }
-    public RentARoom.Models.DeleteReservationOutputSP DeleteReservation { get; set; }
+    public IEnumerable<RentARoom.Models.Reservations.MyReservation> MyReservations { get; set; }
+    public RentARoom.Models.Reservations.MyReservation MyReservation { get; set; }
+    public RentARoom.Models.Reservations.MyReservationSub MyReservationSub { get; set; }
+    public RentARoom.Models.Reservations.MakeReservationOutputSP MakeReservation { get; set; }
+    public RentARoom.Models.Reservations.DeleteReservationOutputSP DeleteReservation { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
