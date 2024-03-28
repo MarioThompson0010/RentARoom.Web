@@ -1,28 +1,40 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:20327",
-      "sslPort": 44359
-    }
-  },
-  "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "RentARoom.Web": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    }
-  }
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
+		"iisExpress": {
+			"applicationUrl": "http://localhost:20327",
+			"sslPort": 44359
+		}
+	},
+	"profiles": {
+		"IIS Express": {
+			"commandName": "IISExpress",
+			"launchBrowser": true,
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"http": {
+				"commandName": "Project",
+				"dotnetRunMessages": true,
+				"launchBrowser": true,
+				"launchUrl": "swagger",
+				"applicationUrl": "http://localhost:5218",
+				"environmentVariables": {
+					"ASPNETCORE_ENVIRONMENT": "Development"
+				}
+			},
+			"RentARoom.Web": {
+				"commandName": "Project",
+				"dotnetRunMessages": true,
+				"launchBrowser": true,
+				"applicationUrl": "https://localhost:5001;http://localhost:5000",
+				"environmentVariables": {
+					"ASPNETCORE_ENVIRONMENT": "Development"
+				}
+			}
+			// backend stuff
+
+		}
+	}
 }
