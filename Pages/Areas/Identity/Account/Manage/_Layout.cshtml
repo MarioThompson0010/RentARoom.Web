@@ -2,10 +2,16 @@
     if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
     {
         Layout = parentLayout.ToString();
+        <p>
+         hey dude
+        </p>
     }
     else
     {
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+        <p>
+         hey jude
+        </p>
     }
 }
 

@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity;
 using AuthenticationTest.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using AuthenticationTest.Data;
+using RentARoom.Web.Pages;
 
 namespace RentARoom.Web
 {
@@ -44,16 +45,47 @@ namespace RentARoom.Web
                 c.BaseAddress = new Uri("https://localhost:7050/");
             });
             services.AddDbContext<BlazorContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnDBConnection")));
-            //        services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //.AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-            //        services.AddIdentity<AuthenticationTestUser, IdentityRole>(options =>
-            //        {
-            //            options.User.RequireUniqueEmail = false;
-            //        })
-            //.AddEntityFrameworkStores<AppDbContext>()
-            //.AddDefaultTokenProviders();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<BlazorContext>();
+
+
+			/////////////
+//			services.AddDefaultIdentity<IdentityUser>
+//	(options =>
+//	{
+//		options.SignIn.RequireConfirmedAccount = true;
+//		options.Password.RequireDigit = false;
+//		options.Password.RequiredLength = 6;
+//		options.Password.RequireNonAlphanumeric = false;
+//		options.Password.RequireUppercase = false;
+//		options.Password.RequireLowercase = false;
+//	})
+//.AddEntityFrameworkStores<AppDbContext>();
+			//////////////////////
+
+			//        services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+			//.AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+			//        services.AddIdentity<AuthenticationTestUser, IdentityRole>(options =>
+			//        {
+			//            options.User.RequireUniqueEmail = false;
+			//        })
+			//.AddEntityFrameworkStores<AppDbContext>()
+			//.AddDefaultTokenProviders();
+			services.AddDefaultIdentity<IdentityUser>(options =>
+            {
+
+                options.SignIn.RequireConfirmedAccount = true;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 2;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+
+
+            }
+
+
+			).AddEntityFrameworkStores<BlazorContext>();
 
             services.AddAuthentication("Identity.Application").AddCookie();
             services.AddControllersWithViews();
@@ -88,7 +120,7 @@ namespace RentARoom.Web
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(); 
             //!!!!
             app.UseAuthentication();
 

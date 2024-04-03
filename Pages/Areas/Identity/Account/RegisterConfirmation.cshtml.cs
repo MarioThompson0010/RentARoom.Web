@@ -44,6 +44,9 @@ namespace RentARoom.Areas.Identity.Pages.Account
         /// </summary>
         public string EmailConfirmationUrl { get; set; }
 
+        public string PathToClients { get; set; } = "../../../DisplayClients";
+        public string ButtonLabel { get; set; } = "Display Clients dude";
+
         public async Task<IActionResult> OnGetAsync(string email, string returnUrl = null)
         {
             if (email == null)

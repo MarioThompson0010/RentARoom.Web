@@ -4,6 +4,7 @@ using RentARoom.Models;
 using System.Threading.Tasks;
 using RentARoom.Web.Services;
 //using CommandLineEF.Models;
+using RentARoom.Models.Clients;
 using System.Linq;
 
 

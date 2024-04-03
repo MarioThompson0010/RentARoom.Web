@@ -11,6 +11,10 @@ public class BlazorContext : IdentityDbContext<IdentityUser>
     public BlazorContext(DbContextOptions<BlazorContext> options)
         : base(options)
     {
+        if (options.ContextType == typeof(BlazorContext))
+        {
+
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
