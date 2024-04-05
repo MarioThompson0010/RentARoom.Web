@@ -16,6 +16,8 @@ using AuthenticationTest.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using AuthenticationTest.Data;
 using RentARoom.Web.Pages;
+using RentARoom.Web;
+using System.Text.Json;
 
 namespace RentARoom.Web
 {
@@ -23,6 +25,7 @@ namespace RentARoom.Web
     {
         public Startup(IConfiguration configuration)
         {
+            
             Configuration = configuration;
         }
 
@@ -33,8 +36,11 @@ namespace RentARoom.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddRazorComponents().AddInteractiveServerComponents();
+
             services.AddServerSideBlazor();
-            
+
             services.AddHttpClient<IGetClients, GetClients>("myapi", c =>
             {
                 c.BaseAddress = new Uri(Configuration.GetConnectionString("LocalHostURI"));
@@ -46,7 +52,7 @@ namespace RentARoom.Web
             });
             services.AddDbContext<BlazorContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnDBConnection")));
 
-
+            //services.AddMvc();
 
 			/////////////
 //			services.AddDefaultIdentity<IdentityUser>
@@ -88,21 +94,29 @@ namespace RentARoom.Web
 			).AddEntityFrameworkStores<BlazorContext>();
 
             services.AddAuthentication("Identity.Application").AddCookie();
+            //services.AddControllers
+            //    .AddJsonOptions(options =>
+            //    {
+            //        options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+            //        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            //        options.JsonSerializerOptions.IncludeFields = true;
+            //    }); //.AddNewtonSoftJson();
+
             services.AddControllersWithViews();
 
-			//services.ConfigureApplicationCookie(options =>
-			//{
-			//    // Cookie settings
-			//    options.Cookie.HttpOnly = true;
-			//    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    // Cookie settings
+            //    options.Cookie.HttpOnly = true;
+            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-			//    options.LoginPath = "/Identity/Account/Login";
-			//    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-			//    options.SlidingExpiration = true;
-			//});
-			
-			//services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
-		}       
+            //    options.LoginPath = "/Identity/Account/Login";
+            //    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+            //    options.SlidingExpiration = true;
+            //});
+
+            //services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+        }       
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -128,21 +142,26 @@ namespace RentARoom.Web
             
             //!!!!
             app.UseAuthorization();
+            //app.UseAntiforgery();
+            //IHostBuilder hostBuilder = app.ConfigureServices((context, services) => {
+            //	services.AddDbContext<AppDbContext>(options =>
+            //		options.UseSqlServer(
+            //			context.Configuration.GetConnectionString("EmployeeManagementWebContextConnection")));
 
-			//IHostBuilder hostBuilder = app.ConfigureServices((context, services) => {
-			//	services.AddDbContext<AppDbContext>(options =>
-			//		options.UseSqlServer(
-			//			context.Configuration.GetConnectionString("EmployeeManagementWebContextConnection")));
-
-			//	services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-			//		.AddEntityFrameworkStores<EmployeeManagementWebContext>();
-			//});
-
-
-			app.UseEndpoints(endpoints =>
+            //	services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //		.AddEntityFrameworkStores<EmployeeManagementWebContext>();
+            //});
+            //app.MapRazorComponents<App>();
+            
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+                //endpoints.MapRazorPages();
+                //endpoints.MapBlazorHub("/Pages");
+                //endpoints.MapRazorPages();
+                //endpoints.MapRazorComponents<App>().AddInteractiveServerRenderMode();
+                //endpoints.Map
             });
         }
     }

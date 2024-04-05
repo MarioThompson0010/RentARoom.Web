@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 
-namespace RentARoom.Web.Pages
+namespace RentARoom.Web.Pages.Areas.Identity.Pages.Account
 {
-    public class DisplayHomeBase :ComponentBase
+    public class DisplayHomeLoginBase :ComponentBase
     {
 
         //[Inject]
@@ -56,7 +56,7 @@ namespace RentARoom.Web.Pages
             //Navigation.NavigateTo("DisplayReservations");
         }
 
-        protected void LookupClientByIdxx()
+        protected void LookupClientById()
         {
 			Navigation.NavigateTo($"DisplayClients");
 

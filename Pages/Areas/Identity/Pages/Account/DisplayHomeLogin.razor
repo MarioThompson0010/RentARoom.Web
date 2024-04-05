@@ -1,0 +1,17 @@
+﻿@page "/DisplayHomeLogin"
+@inherits DisplayHomeLoginBase
+@using RentARoom.Web.Pages.Areas.Identity.Pages.Account
+@using static Microsoft.AspNetCore.Components.Web.RenderMode
+@rendermode InteractiveServer
+@* @rendermode renderModeForPage *@
+
+<h3>Welcome to Rent-a-Room especially for members of the Church of Jesus Christ of Latter-day Saints</h3>
+
+<div>
+	@* <Dialog @rendermode="RenderMode.InteractiveServer"> *@
+		<button class="btn btn-primary"   @onclick="LookupClientById" type="button">
+			Display Clients
+		</button>
+	@* </Dialog> *@
+	<script src="_framework/blazor.server.js"></script>
+</div>

@@ -1,4 +1,5 @@
 ﻿@page "/"
+
 @namespace RentARoom.Web.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
@@ -15,9 +16,11 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
     <link href="RentARoom.Web.styles.css" rel="stylesheet" />
+
 </head>
 <body>
-    <component type="typeof(App)" render-mode="ServerPrerendered" />
+    
+    <component type="typeof(App)"  render-mode="ServerPrerendered"   />
 
     <div id="blazor-error-ui">
         <environment include="Staging,Production">

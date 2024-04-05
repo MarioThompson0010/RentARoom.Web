@@ -1,4 +1,7 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
+﻿@using static Microsoft.AspNetCore.Components.Web.RenderMode
+@rendermode InteractiveServer
+
+<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">RentARoom.Webxx</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
@@ -13,13 +16,14 @@
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="Areas/Identity/Account/Login" Match="NavLinkMatch.All">
+            <NavLink class="nav-link"  href="Areas/Identity/Pages/Account/Login" Match="NavLinkMatch.All">
                 <span class="oi oi-lock-locked" aria-hidden="true"></span> Login
             </NavLink>
         </li>
-    </ul>       
+    </ul>  
+    @* <script src="_framework/blazor.server.js"></script> *@
 </div>
-
+@* <script src="_framework/blazor.server.js"></script> *@
 @code {
     private bool collapseNavMenu = true;
 
